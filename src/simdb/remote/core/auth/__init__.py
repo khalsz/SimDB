@@ -95,7 +95,7 @@ def check_auth(config: Config, request: Request) -> Optional[User]:
         config.get_string_option("authentication.type").lower().split(",")
     )
     if "token" not in authentication_types:
-        authentication_types = ["token", *authentication_types]
+        authentication_types = [*authentication_types, "token"]
 
     for authentication_type in authentication_types:
         authenticator = Authenticator.get(authentication_type)
